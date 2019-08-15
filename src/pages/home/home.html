@@ -1,14 +1,86 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
+  <ion-navbar color="danger">
+    <ion-title text-center>
+      Pickup
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+    <ion-searchbar
+    [(ngModel)]="searchString"
+    (input)="searchUser($event)" 
+    placeholder="search"></ion-searchbar>
+
+  <div>
+    <ion-list>
+      <!-- <ion-card *ngFor="let item of pickupdataStore;" style="margin-bottom: 2px;">
+        <ion-grid>
+            <ion-row>
+              <b text-uppercase>{{item.companyName}} </b>
+            </ion-row>
+            <ion-row>
+              <p>{{item.address}}</p>
+            </ion-row>
+            <ion-row>
+              <b text-uppercase>Account Number: {{item.accountNumber}} </b>
+            </ion-row>
+            <ion-row>
+                <b text-uppercase>Contact Person: </b> {{item.contactPerson}} 
+              </ion-row>
+        </ion-grid>
+      </ion-card> -->
+
+      <ion-card *ngFor="let item of pickupdataStore;" style="margin-bottom: 2px;">
+        <ion-grid>
+            <ion-row>
+              <b text-uppercase>{{item.companyName}} </b>
+            </ion-row>
+            <ion-row>
+              <b text-uppercase>Address: </b> {{item.address}}
+            </ion-row>
+            <ion-row>
+              <b text-uppercase>Account Number: {{item.accountNumber}} </b>
+            </ion-row>
+            <ion-row>
+                <b text-uppercase>Contact Person: </b> {{item.contactPerson}} 
+              </ion-row>
+              <ion-row>
+                <b text-uppercase>Shipment Type: </b> {{item.shipmentType}} 
+              </ion-row>
+              <ion-row>
+                <b text-uppercase>Remarks: </b> {{item.shipmentType}} 
+              </ion-row>
+              <!-- <ion-row>
+                <b text-uppercase>Contact: </b> {{item.contact}} 
+              </ion-row> -->
+          
+              <!-- <b>Contact Number:</b> -->
+     <ion-row>
+       <div style="padding:5px">
+        <ion-icon ios="ios-call" md="md-call" style="color:palevioletred; font-size:20px;"> </ion-icon> &nbsp; <b style="color: blue"
+          (click)="callNum(item.contact)">{{item.contact}} </b>
+      </div>
+      </ion-row>
+        </ion-grid>
+        <div>
+          <ion-grid no-padding>
+            <ion-row>
+              <ion-col style="margin-left: 10px;">
+      
+                <button color="danger" ion-fab (click)="whatsappShare(item.contact)">
+                  <ion-icon ios="logo-whatsapp" md="logo-whatsapp"></ion-icon>
+                </button>
+              </ion-col>
+              <ion-col style="margin-right: 10px;">
+                <button style=float:right; color="danger" ion-fab (click)="navme(item.address)">
+                  <ion-icon style="color:oldlace;" ios="ios-locate" md="md-locate"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-card>
+    </ion-list>
+  </div>
 </ion-content>

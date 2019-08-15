@@ -5,7 +5,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+import { HttpClientModule } from '@angular/common/http'
 import { HomePage } from '../pages/home/home';
+import { IonicStorageModule } from '@ionic/storage';
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import { CallNumber } from '@ionic-native/call-number';
+
+
 
 @NgModule({
   declarations: [
@@ -14,6 +20,8 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -24,7 +32,10 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    LaunchNavigator,
+    CallNumber,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+ 
   ]
 })
 export class AppModule {}
